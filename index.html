@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Felipe</title>
+    <link rel="preconnect" href="https://fonts.google.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header id="home" class="cabecalho">
+        <a class="logo" href="/">FS</a>
+        <nav class="container-nav">
+            <ul class="menu-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contato">Contato</a></li>                
+            </ul>
+            <button class="botao-tema">
+                <i class="fa-solid fa-circle-half-stroke"></i>
+                <span>Modo Claro</span>
+            </button>
+        </nav>
+    </header>
+    <img src="https://i.pravatar.cc/150" alt="Felipe Souza" class="avatar">
+    <h1 id="titulo-principal">Felipe Souza</h1>
+    <h2>Estudante de Front-End</h2>
+    <p>Quero aprender a construir um site funcional e responsivo em dois meses.</p>
+    <div id="wrapper-texto" class="wrapper-texto escondido">
+        <div class="conteudo-interno">
+            <p>Estou me aventurando a tentar aprender programação para transitar <span>(como o meu bom amigo Cleitinho me ensinou que é o correto... além de muitas outras coisas)</span>  de carreira com auxílio de <strong>IA</strong>.</p>
+        </div>
+    </div>
+        <button class="saiba-mais"><i class="fa-solid fa-arrow-down"></i></button>
+    <ul class="meu-menu">
+        <li>Programar</li>
+        <li>Jogar</li>
+        <li>Estudar</li>
+    </ul>
+    <a href="https://instagram.com/felipesouza" target="_blank" class="botao-link">
+        <i class="fab fa-instagram"></i>Me siga no instagram
+    </a>
+    <section id="skills" class="secao-skill">
+        <h3>Minhas futuras Skills</h3>
+        <ul class="grid-skill">
+            <li><i class="fa-brands fa-html5"></i>HTML</li>
+            <li><i class="fa-brands fa-css3-alt"></i>CSS</li>                
+            <li><i class="fa-brands fa-square-js"></i>JavaScript</li>
+        </ul>        
+    </section>
+    <section id="contato" class="contato">
+        <h3>Fale comigo</h3>
+        <form id="formulario-contato" class="formulario">
+            <div class="campo-formulario">
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required maxlength="100">
+                <span class="contador">0/100</span>
+            </div>
+            <div class="campo-formulario">
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email" placeholder="seunome@email.com.br" required maxlength="100">
+                <span class="contador">0/100</span>
+            </div>
+            <div class="campo-formulario">
+                <label for="mensagem">Escreva sua mensagem: </label>
+                <textarea id="mensagem" name="mensagem" placeholder="Olá. Gostaria de solicitar um orçamento." required maxlength="1000"></textarea>
+                <span class="contador">0/1000</span>
+            </div>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </section>
+    <footer>
+        <p>Desenvolvido por Felipe Souza - 2026</p>
+        <div class="redes-sociais">
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.x.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

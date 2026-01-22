@@ -1,0 +1,519 @@
+/* RESETS */
+
+:root {
+    --cor-fundo: #222;
+    --cor-destaque: #0fc;
+    --cor-subtitulo: #ccc;
+    --cor-texto: #fff;
+    --cor-secundaria: #333;
+    --cor-rodape: #111;
+    --cor-botao-hover: #fff;
+    --cor-botao-conteudo: #2776ea;
+    --cor-fundo-card: #2c2f33;
+    --cor-contador: #808588;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+i, b, em, strong {
+    font-weight: inherit;
+    font-style: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Estilos universais */
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: var(--cor-destaque);
+    margin-bottom: 10px;
+    font-size: 3rem;
+}
+
+h2 {
+    margin-bottom: 10px;
+    color: var(--cor-subtitulo);
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--cor-destaque);
+}
+
+p {
+    margin-bottom: 25px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    width: 60%;  
+}
+
+p span {
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+footer {
+    padding: 20px;
+    background-color: var(--cor-rodape);
+    margin-top: auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+footer p {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+/* Estilo Especificos */
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    max-width: 3840px;
+    padding: 10px 1%;
+}
+
+.logo {
+    color: var(--cor-texto);
+    font-size: 2rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Menu de navegação */
+
+.container-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-nav {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-nav a {
+    color: var(--cor-texto);
+    padding: 5px 20px;
+    border-radius: 40px;
+    border: 1px solid transparent;
+    transition: 0.2s;
+    /* background-color: tomato; */
+}
+
+.menu-nav a:hover {
+    border: 1px solid var(--cor-destaque);
+}
+
+/* Ícones de redes sociais no rodapé */
+
+.redes-sociais {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.redes-sociais i {
+    color: var(--cor-texto);
+    transition: 0.3s;
+    padding: 5px;
+}
+
+.redes-sociais i:hover {
+    color: var(--cor-destaque);
+    transform: scale(1.2);
+}
+
+/* Foto perfil */
+
+.avatar {
+    width: 50%;
+    max-width: 150px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 4px solid var(--cor-destaque);
+    object-fit: cover;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+/* Menu de futuras skills */
+
+.meu-menu {
+    /* list-style-type: none; */
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.meu-menu li{
+    background-color: var(--cor-secundaria);
+    padding: 50px 80px;
+    border-radius: 5px;
+    transition: 0.3s;
+    text-align: center;
+    width: auto;
+}
+
+.meu-menu li a {
+    /* text-decoration: none; */
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.meu-menu li i {
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+}
+
+.meu-menu li:hover {
+    color: var(--cor-fundo);
+    background-color: var(--cor-destaque);
+    transform: scale(1.05);
+}
+
+/* Seção nova de Skill do Cleitinho */
+
+.secao-skill {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.grid-skill {
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto 20px auto;
+    gap: 15px;    
+}
+
+.grid-skill li {
+    padding: 50px 80px;
+    background-color: var(--cor-fundo-card);
+    width: auto;
+    border-radius: 10px;
+    transition: 0.3s;
+    text-align: center;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-skill li i {
+    margin-bottom: 10px;
+    font-size: 3rem;
+    transition: 0.3s;
+}
+
+.grid-skill li:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    transform: scale(1.05);
+}
+
+.grid-skill li:hover i {
+    transform: translatey(-5px);
+}
+
+/* Botão do instagram no corpo do site */
+
+.botao-link {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo);
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    display: block;
+    transition: 0.3s;
+    margin-bottom: 40px;
+}
+
+.botao-link i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.botao-link:hover {
+    background-color: var(--cor-botao-hover);
+    transform: scale(1.1);
+}
+
+/* Botão para alternar modo claro/escuro */
+
+.botao-tema {
+    min-width: 120px;
+    background: none;
+    border: 1px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.65rem;
+    transition: 0.3s;    
+}
+
+.botao-tema i {
+    margin-right: 8px;
+    font-size: 1em;
+}
+
+.botao-tema:hover {
+    color: var(--cor-fundo);
+    background-color: var(--cor-destaque);
+}
+
+.modo-claro {
+    --cor-fundo: #f0f0f0;
+    --cor-destaque: #ff5c00;
+    --cor-texto: #222;
+    --cor-secundaria: #ddd;
+    --cor-subtitulo: #555;
+    --cor-rodape: #ccc;
+    --cor-botao-hover: #222;
+    --cor-botao-conteudo: #873f2b;
+    --cor-fundo-card: #c2c2c2;
+}
+
+/* Revelar texto oculto */
+
+.texto-ativo {
+    color: #f0f;
+}
+
+.conteudo-interno {
+    overflow: hidden;
+    display: flex;
+}
+
+.wrapper-texto {
+    display: grid;
+    grid-template-rows: 1fr;
+    opacity: 1;
+    transition: grid-template-rows 0.4s ease-out, opacity 0.4s ease-out, margin 0.4s ease-out;
+}
+
+.wrapper-texto p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wrapper-texto.escondido {
+    grid-template-rows: 0fr;
+    opacity: 0;
+    margin-bottom: 0px;
+}
+
+.saiba-mais {
+    background: none;
+    border: 2px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    padding: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s; 
+}
+
+.saiba-mais i {
+    transform: rotate(360deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.saiba-mais.girar-icone i {
+    transform: rotate(180deg);
+}
+
+.saiba-mais:hover {
+    background-color: var(--cor-botao-conteudo);
+    transform: scale(1.1);
+}
+
+.saiba-mais:hover i {
+    transform: rotate(360deg) scale(1.3);
+}
+
+.saiba-mais.girar-icone:hover i {
+    transform: rotate(180deg) scale(1.3);
+}
+
+/* Formulario de contato */
+
+
+/* Perguntar o que esta definindo o tamanho da seção */
+
+.contato {
+    width: 100%;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.formulario label {
+    display: block;
+    margin: 0 0 10px 30px;
+    text-align: left;
+
+}
+
+.formulario input, .formulario textarea {
+    width: 100%;
+    padding: 15px 30px;
+    border: 1px solid var(--cor-subtitulo);
+    background-color: var(--cor-secundaria);
+    border-radius: 30px;
+    font-family: poppins;
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.formulario textarea {
+    resize: none;
+    height: 150px;
+}
+
+.contador {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--cor-contador);
+    text-align: right;
+    margin-right: 30px;
+}
+
+.formulario input:focus, .formulario textarea:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    box-shadow: 0 0 10px rgba(0,255,205, 0.2);
+}
+
+.formulario input:focus::placeholder, .formulario textarea:focus::placeholder {
+    color: transparent;
+}
+
+.formulario button {
+    padding: 15px;
+    background-color: var(--cor-destaque);
+    margin-bottom: 30px;
+    border-radius: 30px;
+    color: var(--cor-fundo);
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    border: 3px solid var(--cor-texto);
+}
+
+.formulario button:hover {
+    transform: scale(1.1);
+    background-color: var(--cor-texto);
+    border: 3px solid var(--cor-destaque);
+}
+
+/* 1. A largura da barra */
+.formulario textarea::-webkit-scrollbar {
+    width: 8px; /* Largura da barra */
+}
+
+/* 2. O Trilho (Track) - O SEGREDO ESTÁ AQUI 🕵️‍♂️ */
+.formulario textarea::-webkit-scrollbar-track {
+    background: transparent; /* Fundo invisível para ficar elegante */
+    
+    /* ISSO RESOLVE SEUS 2 PROBLEMAS: */
+    margin-block: 25px; /* Margem em Cima e Embaixo */
+}
+
+/* 3. A "Unha" (Thumb) - O que você arrasta */
+.formulario textarea::-webkit-scrollbar-thumb {
+    background-color: var(--cor-destaque); /* Sua cor neon */
+    border-radius: 10px; /* Arredonda a unha */
+    
+    /* Um truque extra: Borda transparente para dar sensação de que ela está "flutuando" */
+    border: 2px solid var(--cor-secundaria); 
+}
+
+/* 4. Hover na unha */
+.formulario textarea::-webkit-scrollbar-thumb:hover {
+    background-color: var(--cor-texto);
+}
+
+/* Media Querys */
+
+@media (max-width: 850px) {
+    .meu-menu {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .meu-menu li {
+        width: 80%;
+        margin: 0 auto 10px auto;
+        padding: 20px 0;
+
+    }
+
+    .grid-skill {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .grid-skill li {
+        width: 80%;
+        margin: 0 auto 10px auto;
+        padding: 30px 0;
+    }
+}
