@@ -131,10 +131,6 @@ footer p {
     /* background-color: tomato; */
 }
 
-.menu-nav a:hover {
-    border: 1px solid var(--cor-destaque);
-}
-
 /* Ícones de redes sociais no rodapé */
 
 .redes-sociais {
@@ -148,11 +144,6 @@ footer p {
     color: var(--cor-texto);
     transition: 0.3s;
     padding: 5px;
-}
-
-.redes-sociais i:hover {
-    color: var(--cor-destaque);
-    transform: scale(1.2);
 }
 
 /* Foto perfil */
@@ -203,12 +194,6 @@ footer p {
     padding-bottom: 5px;
 }
 
-.meu-menu li:hover {
-    color: var(--cor-fundo);
-    background-color: var(--cor-destaque);
-    transform: scale(1.05);
-}
-
 /* Seção nova de Skill do Cleitinho */
 
 .secao-skill {
@@ -248,16 +233,6 @@ footer p {
     transition: 0.3s;
 }
 
-.grid-skill li:hover {
-    background-color: var(--cor-destaque);
-    color: var(--cor-fundo);
-    transform: scale(1.05);
-}
-
-.grid-skill li:hover i {
-    transform: translatey(-5px);
-}
-
 /* Botão do instagram no corpo do site */
 
 .botao-link {
@@ -277,11 +252,6 @@ footer p {
     font-size: 1.2em;
 }
 
-.botao-link:hover {
-    background-color: var(--cor-botao-hover);
-    transform: scale(1.1);
-}
-
 /* Botão para alternar modo claro/escuro */
 
 .botao-tema {
@@ -299,11 +269,6 @@ footer p {
 .botao-tema i {
     margin-right: 8px;
     font-size: 1em;
-}
-
-.botao-tema:hover {
-    color: var(--cor-fundo);
-    background-color: var(--cor-destaque);
 }
 
 .modo-claro {
@@ -371,19 +336,6 @@ footer p {
 
 .saiba-mais.girar-icone i {
     transform: rotate(180deg);
-}
-
-.saiba-mais:hover {
-    background-color: var(--cor-botao-conteudo);
-    transform: scale(1.1);
-}
-
-.saiba-mais:hover i {
-    transform: rotate(360deg) scale(1.3);
-}
-
-.saiba-mais.girar-icone:hover i {
-    transform: rotate(180deg) scale(1.3);
 }
 
 /* Formulario de contato */
@@ -458,12 +410,6 @@ footer p {
     border: 3px solid var(--cor-texto);
 }
 
-.formulario button:hover {
-    transform: scale(1.1);
-    background-color: var(--cor-texto);
-    border: 3px solid var(--cor-destaque);
-}
-
 /* 1. A largura da barra */
 .formulario textarea::-webkit-scrollbar {
     width: 8px; /* Largura da barra */
@@ -486,12 +432,72 @@ footer p {
     border: 2px solid var(--cor-secundaria); 
 }
 
-/* 4. Hover na unha */
-.formulario textarea::-webkit-scrollbar-thumb:hover {
-    background-color: var(--cor-texto);
-}
-
 /* Media Querys */
+
+/* Hovers */
+
+@media (min-width: 850px) {
+
+    .menu-nav a:hover {
+        border: 1px solid var(--cor-destaque);
+    }
+
+    .redes-sociais i:hover {
+        color: var(--cor-destaque);
+        transform: scale(1.2);
+    }
+
+    .meu-menu li:hover {
+        color: var(--cor-fundo);
+        background-color: var(--cor-destaque);
+        transform: scale(1.05);
+    }
+
+    .grid-skill li:hover {
+        background-color: var(--cor-destaque);
+        color: var(--cor-fundo);
+        transform: scale(1.05);
+    }
+
+    .grid-skill li:hover i {
+        transform: translatey(-5px);
+    }
+
+    .botao-link:hover {
+       background-color: var(--cor-botao-hover);
+        transform: scale(1.1);
+    }
+
+    .botao-tema:hover {
+        color: var(--cor-fundo);
+        background-color: var(--cor-destaque);
+    }
+
+    
+    .saiba-mais:hover {
+        background-color: var(--cor-botao-conteudo);
+        transform: scale(1.1);
+    }
+
+    .saiba-mais:hover i {
+        transform: rotate(360deg) scale(1.3);
+    }
+
+    .saiba-mais.girar-icone:hover i {
+        transform: rotate(180deg) scale(1.3);
+    }
+
+    .formulario button:hover {
+        transform: scale(1.1);
+        background-color: var(--cor-texto);
+        border: 3px solid var(--cor-destaque);
+    }
+
+    .formulario textarea::-webkit-scrollbar-thumb:hover {
+        background-color: var(--cor-texto);
+    }
+
+}
 
 @media (max-width: 850px) {
     .meu-menu {
