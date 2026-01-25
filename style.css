@@ -11,6 +11,7 @@
     --cor-botao-conteudo: #2776ea;
     --cor-fundo-card: #2c2f33;
     --cor-contador: #808588;
+    --cor-erro-form: #ff4d4d;
 }
 
 * {
@@ -31,6 +32,10 @@ ul {
 
 /* Estilos universais */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
@@ -40,6 +45,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 120px;
+}
+
+#botao-mobile {
+    display: none;
 }
 
 h1 {
@@ -98,6 +108,13 @@ footer p {
     width: 100%;
     max-width: 3840px;
     padding: 10px 1%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--cor-fundo);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .logo {
@@ -113,13 +130,14 @@ footer p {
     display: flex;
     align-items: center;
     gap: 30px;
+    transition: 0.3s;
 }
 
 .menu-nav {
     display: grid;
     grid-template-columns: repeat(3, auto);
     gap: 10px;
-    align-items: center;
+    align-items: center;    
 }
 
 .menu-nav a {
@@ -128,7 +146,6 @@ footer p {
     border-radius: 40px;
     border: 1px solid transparent;
     transition: 0.2s;
-    /* background-color: tomato; */
 }
 
 /* Ícones de redes sociais no rodapé */
@@ -155,14 +172,12 @@ footer p {
     border-radius: 50%;
     border: 4px solid var(--cor-destaque);
     object-fit: cover;
-    margin-top: 50px;
     margin-bottom: 20px;
 }
 
 /* Menu de futuras skills */
 
-.meu-menu {
-    /* list-style-type: none; */
+.meu-menu {    
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -171,22 +186,21 @@ footer p {
     margin: 0 auto 20px auto;
 }
 
-.meu-menu li{
-    background-color: var(--cor-secundaria);
-    padding: 50px 80px;
-    border-radius: 5px;
-    transition: 0.3s;
+.meu-menu li{    
     text-align: center;
     width: auto;
 }
 
-.meu-menu li a {
-    /* text-decoration: none; */
+.meu-menu li a {    
     color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    padding: 50px 80px;
+    transition: 0.3s;
+    border-radius: 5px;
+    background-color: var(--cor-secundaria);
 }
 
 .meu-menu li i {
@@ -410,6 +424,15 @@ footer p {
     border: 3px solid var(--cor-texto);
 }
 
+.mensagem-erro {
+    color: var(--cor-erro-form);
+    font-size: 0.8rem;
+    display: block;
+    text-align: left;
+    margin: 5px 0 0 30px;
+    height: 1rem;
+}
+
 /* 1. A largura da barra */
 .formulario textarea::-webkit-scrollbar {
     width: 8px; /* Largura da barra */
@@ -436,7 +459,7 @@ footer p {
 
 /* Hovers */
 
-@media (min-width: 850px) {
+@media (hover: hover) {
 
     .menu-nav a:hover {
         border: 1px solid var(--cor-destaque);
@@ -447,7 +470,7 @@ footer p {
         transform: scale(1.2);
     }
 
-    .meu-menu li:hover {
+    .meu-menu a:hover {
         color: var(--cor-fundo);
         background-color: var(--cor-destaque);
         transform: scale(1.05);
@@ -505,7 +528,7 @@ footer p {
         width: 100%;
     }
 
-    .meu-menu li {
+    .meu-menu a {
         width: 80%;
         margin: 0 auto 10px auto;
         padding: 20px 0;
@@ -526,43 +549,68 @@ footer p {
 
 @media (max-width: 600px) {
 
+    body {
+        padding-top: 0;
+    }
+
+    /* CABEÇALHO RESTAURADO E CENTRALIZADO */
     .cabecalho {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-        align-items: center;
-        position: relative;
-    }
-
-    .container-nav {
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-    }
-
-    .menu-nav {
         display: flex;
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
+        justify-content: center; /* Centraliza o item no fluxo (Hambúrguer) */
         align-items: center;
+        position: fixed;
+        padding: 0 5%;
+        height: 70px;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: var(--cor-fundo);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
-    .botao-tema {
-        min-width: 0;
-        border: none;
+    /* Logo "flutuando" na esquerda */
+    .logo {
         position: absolute;
-        top: 12px;
-        right: 10%;
-        font-size: 0;
+        left: 5%;
+        font-size: 1.8rem;
+    }
+
+    /* Container do meio */
+    .container-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+    }
+
+    /* O Botão Hambúrguer centralizado */
+    #botao-mobile {
+        display: flex;
+        border: none;
+        background: none;
+        font-size: 1.8rem;
+        color: var(--cor-texto);
+        cursor: pointer;
+        padding: 0;
+    }
+
+    /* Botão de Tema limpo na direita */
+    .botao-tema {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: none;
+        min-width: 0;
         width: 45px;
         height: 45px;
-        border-radius: 50%;
         padding: 0;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 0; /* Esconde o texto "Modo Claro" */
     }
 
     .botao-tema i {
@@ -570,19 +618,44 @@ footer p {
         margin-right: 0;
     }
 
+    /* O Menu Mobile (O que aparece e some) */
+    .menu-nav {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-fundo);
+        flex-direction: column;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .menu-nav.aberto {
+        display: flex;
+    }
+
+    /* --- RESTAURAÇÃO DO FORMULÁRIO E TEXTOS --- */
+    
     .meu-menu, .grid-skill, .formulario, p {
-        width: 80%;
+        width: 85%; /* Ajuste leve para não bater na borda */
         margin-left: auto;
         margin-right: auto;
     }
 
-    .meu-menu li, .grid-skill li {
+    /* Garante que os cards e botões ocupem a largura certa */
+    .meu-menu a, .grid-skill li {
         padding: 30px 20px;
         width: 100%;
     }
 
+    .avatar {
+        margin-top: 100px;
+        margin-bottom: 20px;
+    }
+
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         line-height: 1.2;
     }
 
@@ -595,6 +668,6 @@ footer p {
     }
 
     p {
-        width: 80%;
+        width: 85%;
     }
 }
