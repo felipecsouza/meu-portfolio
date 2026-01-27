@@ -2,7 +2,7 @@ const titulo = document.getElementById("titulo-principal");
 const botaoTema = document.querySelector(".botao-tema");
 const textoBotao = botaoTema.querySelector("span");
 const body = document.body;
-const listaNoHTML = document.querySelector(".meu-menu");
+const listaDeCards = document.querySelector(".meu-menu");
 const saibaMais = body.querySelector(".saiba-mais");
 const wrapperTexto = document.getElementById("wrapper-texto");
 const formulario = document.getElementById("formulario-contato");
@@ -17,6 +17,14 @@ const minhaLista = [
     {nome: "Videogames", link: "https://store.steampowered.com/", icone: "fa-solid fa-gamepad"},
     {nome: "História", link: "https://pt.wikipedia.org/wiki/Hist%C3%B3ria", icone: "fa-solid fa-landmark"},
     {nome: "GitHub", link: "https://github.com", icone: "fa-brands fa-github"}
+];
+const listaDeProjetos = [
+    {nome: "projeto 1", descricao: "Landing Page Advogados", imagem: "https://picsum.photos/300/200?random=1", link: "#"},
+    {nome: "projeto 2", descricao: "E-Commerce de Roupas", imagem: "https://picsum.photos/300/200?random=2", link: "#"},
+    {nome: "projeto 3", descricao: "Dashboard Financeiro", imagem: "https://picsum.photos/300/200?random=3", link: "#"},
+    {nome: "projeto 4", descricao: "Blog Pessoal", imagem: "https://picsum.photos/300/200?random=4", link: "#"},
+    {nome: "projeto 5", descricao: "App de Delivery", imagem: "https://picsum.photos/300/200?random=5", link: "#"},
+    {nome: "projeto 6", descricao: "Portfólio Antigo", imagem: "https://picsum.photos/300/200?random=6", link: "#"},
 ];
 
 // Trocar botaoTema. Modo claro/escuro
@@ -59,6 +67,28 @@ listaMenuNav.forEach(function(link) {
 
     link.addEventListener("click", fechaMenuNav);   
 }) 
+
+// Criar os cards
+
+listaDeCards.innerHTML = "";
+
+listaDeProjetos.forEach(function(card, index) {
+    let novoCard = document.createElement("li");
+    novoCard.classList.add("card-projeto", "card-escondido");
+    novoCard.style.transitionDelay = `${(index % 3) * 200}ms`;
+    novoCard.innerHTML = `
+        <div class="capa-projeto">
+            <img src="${card.imagem}" alt="Preview do projeto.">
+        </div>
+        <div class="info-projeto">
+            <h4>${card.nome}</h4>
+            <p>${card.descricao}</p>
+            <a href="${card.link}" class="btn-projeto">Ver detalhes</a>
+        </div>        
+    `;
+    listaDeCards.appendChild(novoCard);    
+});
+
 
 // Cria a primeira lista na pagina
 
