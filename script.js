@@ -9,7 +9,7 @@ const formulario = document.getElementById("formulario-contato");
 const camposComLimite = document.querySelectorAll("[maxlength]");
 const botaoMenu = document.getElementById("botao-mobile");
 const listaMenuNav = document.querySelectorAll(".menu-nav a");
-const listaMenu = document.querySelector(".menu-nav"); 
+const listaMenu = document.querySelector(".menu-nav");
 const minhaLista = [
     {nome: "HTML", link: "https://developer.mozilla.org/pt-BR/docs/Web/HTML", icone: "fa-brands fa-html5"},
     {nome: "CSS", link: "https://developer.mozilla.org/pt-BR/docs/Web/CSS", icone: "fa-brands fa-css3-alt"},
@@ -62,18 +62,18 @@ listaMenuNav.forEach(function(link) {
 
 // Cria a primeira lista na pagina
 
-listaNoHTML.innerHTML = "";
+// listaNoHTML.innerHTML = "";
 
-minhaLista.forEach(function(item) {
-    let novoItem = document.createElement("li");
-    novoItem.innerHTML = `
-    <a href="${item.link}" target="_blank">
-        <i class="${item.icone}"></i>
-        ${item.nome}
-    </a>
-    `;
-    listaNoHTML.appendChild(novoItem);
-});
+// minhaLista.forEach(function(item) {
+//     let novoItem = document.createElement("li");
+//     novoItem.innerHTML = `
+//     <a href="${item.link}" target="_blank">
+//         <i class="${item.icone}"></i>
+//         ${item.nome}
+//     </a>
+//     `;
+//     listaNoHTML.appendChild(novoItem);
+// });
 
 // Escutadores de evento
 
@@ -162,4 +162,26 @@ camposComLimite.forEach(function(campo) {
         const tamanhoAtual = campo.value.length;
         spanContador.innerText = `${tamanhoAtual}/${limiteMaximo}`;
     });
+});
+
+// Reveal dos cards
+
+const observador = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(entrada) {
+        if (entrada.isIntersecting) {
+            entrada.target.classList.add('card-visivel');
+
+            setTimeout(function() {
+                entrada.target.classList.remove('card-escondido');
+                entrada.target.classList.remove('card-visivel');
+            }, 1000);
+            observador.unobserve(entrada.target);
+        }
+    });
+});
+
+const cardsEscondidos = document.querySelectorAll(".card-escondido");
+
+cardsEscondidos.forEach(function(elemento) {
+    observador.observe(elemento);
 });
