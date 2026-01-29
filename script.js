@@ -10,25 +10,17 @@ const camposComLimite = document.querySelectorAll("[maxlength]");
 const botaoMenu = document.getElementById("botao-mobile");
 const listaMenuNav = document.querySelectorAll(".menu-nav a");
 const listaMenu = document.querySelector(".menu-nav");
-const minhaLista = [
-    {nome: "HTML", link: "https://developer.mozilla.org/pt-BR/docs/Web/HTML", icone: "fa-brands fa-html5"},
-    {nome: "CSS", link: "https://developer.mozilla.org/pt-BR/docs/Web/CSS", icone: "fa-brands fa-css3-alt"},
-    {nome: "JavaScript", link: "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript", icone: "fa-brands fa-js"},
-    {nome: "Videogames", link: "https://store.steampowered.com/", icone: "fa-solid fa-gamepad"},
-    {nome: "História", link: "https://pt.wikipedia.org/wiki/Hist%C3%B3ria", icone: "fa-solid fa-landmark"},
-    {nome: "GitHub", link: "https://github.com", icone: "fa-brands fa-github"}
-];
+
 const listaDeProjetos = [
-    {nome: "projeto 1", descricao: "Landing Page Advogados", imagem: "https://picsum.photos/300/200?random=1", link: "#"},
-    {nome: "projeto 2", descricao: "E-Commerce de Roupas", imagem: "https://picsum.photos/300/200?random=2", link: "#"},
-    {nome: "projeto 3", descricao: "Dashboard Financeiro", imagem: "https://picsum.photos/300/200?random=3", link: "#"},
-    {nome: "projeto 4", descricao: "Blog Pessoal", imagem: "https://picsum.photos/300/200?random=4", link: "#"},
-    {nome: "projeto 5", descricao: "App de Delivery", imagem: "https://picsum.photos/300/200?random=5", link: "#"},
-    {nome: "projeto 6", descricao: "Portfólio Antigo", imagem: "https://picsum.photos/300/200?random=6", link: "#"},
+    {nome: "Projeto 1", descricao: "Landing Page Advogados", imagem: "https://picsum.photos/300/200?random=1", link: "#"},
+    {nome: "Projeto 2", descricao: "E-Commerce de Roupas", imagem: "https://picsum.photos/300/200?random=2", link: "#"},
+    {nome: "Projeto 3", descricao: "Dashboard Financeiro", imagem: "https://picsum.photos/300/200?random=3", link: "#"},
+    {nome: "Projeto 4", descricao: "Blog Pessoal", imagem: "https://picsum.photos/300/200?random=4", link: "#"},
+    {nome: "Projeto 5", descricao: "App de Delivery", imagem: "https://picsum.photos/300/200?random=5", link: "#"},
+    {nome: "Projeto 6", descricao: "Portfólio Antigo", imagem: "https://picsum.photos/300/200?random=6", link: "#"},
 ];
 
 // Trocar botaoTema. Modo claro/escuro
-
 function trocarTema() {
     body.classList.toggle("modo-claro");
     if (textoBotao.innerText === "Modo Claro") {
@@ -39,7 +31,6 @@ function trocarTema() {
 }
 
 // Altera o texto do título Principal
-
 function mudarTexto() {
     titulo.classList.toggle("texto-ativo")
     if (titulo.innerText === "Felipe Souza") {
@@ -49,8 +40,7 @@ function mudarTexto() {
     }
 }
 
-// Mostra o texto escondido embaixo do primeiro paragrafo da pagina
-
+// Mostra o texto escondido
 function mostrarTexto() {
         wrapperTexto.classList.toggle("escondido");
         saibaMais.classList.toggle("girar-icone");
@@ -64,18 +54,19 @@ listaMenuNav.forEach(function(link) {
     function fechaMenuNav() {
         listaMenu.classList.remove("aberto");
     }
-
     link.addEventListener("click", fechaMenuNav);   
 }) 
 
-// Criar os cards
-
+// Criar os cards e limpar HTML anterior
 listaDeCards.innerHTML = "";
 
 listaDeProjetos.forEach(function(card, index) {
     let novoCard = document.createElement("li");
     novoCard.classList.add("card-projeto", "card-escondido");
+    
+    // Cálculo do delay (Efeito Escadinha)
     novoCard.style.transitionDelay = `${(index % 3) * 200}ms`;
+
     novoCard.innerHTML = `
         <div class="capa-projeto">
             <img src="${card.imagem}" alt="Preview do projeto.">
@@ -86,37 +77,16 @@ listaDeProjetos.forEach(function(card, index) {
             <a href="${card.link}" class="btn-projeto">Ver detalhes</a>
         </div>        
     `;
-    listaDeCards.appendChild(novoCard);    
+    listaDeCards.appendChild(novoCard);
 });
 
-
-// Cria a primeira lista na pagina
-
-// listaNoHTML.innerHTML = "";
-
-// minhaLista.forEach(function(item) {
-//     let novoItem = document.createElement("li");
-//     novoItem.innerHTML = `
-//     <a href="${item.link}" target="_blank">
-//         <i class="${item.icone}"></i>
-//         ${item.nome}
-//     </a>
-//     `;
-//     listaNoHTML.appendChild(novoItem);
-// });
-
 // Escutadores de evento
-
 titulo.addEventListener("click", mudarTexto);
-
 botaoTema.addEventListener("click", trocarTema);
-
 saibaMais.addEventListener("click", mostrarTexto);
-
 botaoMenu.addEventListener("click", abrirMenu);
 
 // Captura o submit do formulario
-
 formulario.addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -182,7 +152,6 @@ formulario.addEventListener("submit", function(event) {
 });
 
 // Contador de caracteres do fomulario
-
 camposComLimite.forEach(function(campo) {
     const limiteMaximo = campo.getAttribute("maxlength");
     const pai = campo.parentElement;
@@ -194,17 +163,21 @@ camposComLimite.forEach(function(campo) {
     });
 });
 
-// Reveal dos cards
-
+// Reveal dos cards (Porteiro)
 const observador = new IntersectionObserver(function(entradas) {
     entradas.forEach(function(entrada) {
         if (entrada.isIntersecting) {
+            // 1. Aparece
             entrada.target.classList.add('card-visivel');
 
+            // 2. Faxina (remove delay e classes de animação após 1s)
             setTimeout(function() {
+                entrada.target.style.transitionDelay = "0s";
                 entrada.target.classList.remove('card-escondido');
                 entrada.target.classList.remove('card-visivel');
             }, 1000);
+
+            // 3. Para de vigiar
             observador.unobserve(entrada.target);
         }
     });
