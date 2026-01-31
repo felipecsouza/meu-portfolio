@@ -171,6 +171,28 @@ footer p {
 }
 
 /* Menu de futuras skills */
+.campo-busca {
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: var(--cor-secundaria);
+    border: none;
+    margin-bottom: 20px;
+    width: 20%;
+    border: 1px solid var(--cor-subtitulo);
+    font-size: 0.8rem;
+    color: var(--cor-texto);
+}
+
+.campo-busca:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    box-shadow: 0 5px 10px rgba(0,255,205, 0.2);
+}
+
+.campo-busca:focus::placeholder {
+    color: transparent;
+}
+
 .meu-menu {    
  display: grid;
  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -630,6 +652,10 @@ footer p {
     .botao-tema i {
         font-size: 1.2rem;
         margin-right: 0;
+    }
+
+    .campo-busca {
+        width: 80%;
     }
 
     .menu-nav {

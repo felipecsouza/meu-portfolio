@@ -10,6 +10,7 @@ const camposComLimite = document.querySelectorAll("[maxlength]");
 const botaoMenu = document.getElementById("botao-mobile");
 const listaMenuNav = document.querySelectorAll(".menu-nav a");
 const listaMenu = document.querySelector(".menu-nav");
+const campoBusca = document.getElementById("campo-busca");
 
 const listaDeProjetos = [
     {nome: "Projeto 1", descricao: "Landing Page Advogados", imagem: "https://picsum.photos/300/200?random=1", link: "#"},
@@ -58,26 +59,82 @@ listaMenuNav.forEach(function(link) {
 }) 
 
 // Criar os cards e limpar HTML anterior
-listaDeCards.innerHTML = "";
 
-listaDeProjetos.forEach(function(card, index) {
-    let novoCard = document.createElement("li");
-    novoCard.classList.add("card-projeto", "card-escondido");
+// listaDeProjetos.filter(function(projeto) {
+//     return projeto.nome === "Projeto 1" || projeto.nome === "Projeto 3";
+// })
+
+// .forEach(function(card, index) {
+//     let novoCard = document.createElement("li");
+//     novoCard.classList.add("card-projeto", "card-escondido");
     
-    // Cálculo do delay (Efeito Escadinha)
-    novoCard.style.transitionDelay = `${(index % 3) * 200}ms`;
+//     // Cálculo do delay (Efeito Escadinha)
+//     novoCard.style.transitionDelay = `${(index % 3) * 200}ms`;
 
-    novoCard.innerHTML = `
-        <div class="capa-projeto">
-            <img src="${card.imagem}" alt="Preview do projeto.">
-        </div>
-        <div class="info-projeto">
-            <h4>${card.nome}</h4>
-            <p>${card.descricao}</p>
-            <a href="${card.link}" class="btn-projeto">Ver detalhes</a>
-        </div>        
-    `;
-    listaDeCards.appendChild(novoCard);
+//     novoCard.innerHTML = `
+//         <div class="capa-projeto">
+//             <img src="${card.imagem}" alt="Preview do projeto.">
+//         </div>
+//         <div class="info-projeto">
+//             <h4>${card.nome}</h4>
+//             <p>${card.descricao}</p>
+//             <a href="${card.link}" class="btn-projeto">Ver detalhes</a>
+//         </div>        
+//     `;
+//     listaDeCards.appendChild(novoCard);
+// });
+
+// Reveal dos cards (Porteiro)
+const observador = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(entrada) {
+        if (entrada.isIntersecting) {
+            // 1. Aparece
+            entrada.target.classList.add('card-visivel');
+
+            // 2. Faxina (remove delay e classes de animação após 1s)
+            setTimeout(function() {
+                entrada.target.style.transitionDelay = "0s";
+                entrada.target.classList.remove('card-escondido');
+                entrada.target.classList.remove('card-visivel');
+            }, 1000);
+
+            // 3. Para de vigiar
+            observador.unobserve(entrada.target);
+        }
+    });
+});
+
+function criarCards(lista) {
+    listaDeCards.innerHTML = "";
+    lista.forEach(function(card, index) {
+        let novoCard = document.createElement("li");
+        novoCard.classList.add("card-projeto", "card-escondido");
+        novoCard.style.transitionDelay = `${(index % 3) * 200}ms`;
+
+        novoCard.innerHTML = `
+            <div class="capa-projeto">
+                <img src="${card.imagem}" alt="Preview do projeto.">
+            </div>
+            <div class="info-projeto">
+                <h4>${card.nome}</h4>
+                <p>${card.descricao}</p>
+                <a href="${card.link}" class="btn-projeto">Ver detalhes</a>
+            </div>
+        `;
+        listaDeCards.appendChild(novoCard);
+        observador.observe(novoCard);
+
+    });
+}
+
+criarCards(listaDeProjetos);
+
+campoBusca.addEventListener("input", function() {
+    const termoDigitado = campoBusca.value.toLowerCase();
+    const listaFiltrada = listaDeProjetos.filter(function(projeto) {
+        return projeto.nome.toLowerCase().includes(termoDigitado) || projeto.descricao.toLowerCase().includes(termoDigitado);
+    });
+    criarCards(listaFiltrada);
 });
 
 // Escutadores de evento
@@ -163,28 +220,8 @@ camposComLimite.forEach(function(campo) {
     });
 });
 
-// Reveal dos cards (Porteiro)
-const observador = new IntersectionObserver(function(entradas) {
-    entradas.forEach(function(entrada) {
-        if (entrada.isIntersecting) {
-            // 1. Aparece
-            entrada.target.classList.add('card-visivel');
+// const cardsEscondidos = document.querySelectorAll(".card-escondido");
 
-            // 2. Faxina (remove delay e classes de animação após 1s)
-            setTimeout(function() {
-                entrada.target.style.transitionDelay = "0s";
-                entrada.target.classList.remove('card-escondido');
-                entrada.target.classList.remove('card-visivel');
-            }, 1000);
-
-            // 3. Para de vigiar
-            observador.unobserve(entrada.target);
-        }
-    });
-});
-
-const cardsEscondidos = document.querySelectorAll(".card-escondido");
-
-cardsEscondidos.forEach(function(elemento) {
-    observador.observe(elemento);
-});
+// cardsEscondidos.forEach(function(elemento) {
+//     observador.observe(elemento);
+// });
